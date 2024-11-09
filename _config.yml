@@ -18,28 +18,28 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 프로의 개발일지 # the main title
+title: CS with me # the main title
 
-tagline: Developer PRO # it will display as the sub-title
+tagline: Hello World! # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  개발하면서 알게 된 새로운 내용을 기록하고, 많은 정보를 공유하고자 운영하는 블로그입니다.
+   공부하고 고민한 흔적들을 남깁니다.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 # url: "https://jiseoup.github.io"
-url: "https://devpro.kr"
+url: "https://hwisungkk.jithub.io"
 
 github:
-  username: Jiseoup # change to your github username
+  username: hwisungkk # change to your github username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: PRO
-  email: jseoup@gmail.com # change to your email address
+  name: Hwisung
+  email: naatomkr@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://github.com/Jiseoup # change to your github homepage
+    - https://github.com/hwisungkk # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -77,7 +77,7 @@ theme_mode: # [light|dark]
 # img_cdn: 'https://chirpy-img.netlify.app'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/profile/profile.jpg"
+avatar: "/assets/img/profile/brocol.png"
 
 # boolean type, the global switch for ToC in posts.
 toc: true
@@ -86,7 +86,7 @@ comments:
   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
-    shortname: "PRO" # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname: "HS" # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
     repo: # <gh-username>/<repo>
