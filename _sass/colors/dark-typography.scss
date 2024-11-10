@@ -38,8 +38,8 @@
   /* Sidebar */
   --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
   --sidebar-muted-color: #6d6c6b;
-  --sidebar-active-color: rgb(255, 255, 255, 0.8);
-  --nav-cursor-color: rgb(183, 182, 182);
+  --sidebar-active-color: rgba(0, 0, 0, 0.8);
+  --nav-cursor-color: rgb(0, 0, 0);
   --sidebar-btn-bg: rgb(117, 116, 116, 0.2);
 
   /* Topbar */
@@ -123,8 +123,8 @@
   nav[data-toggle="toc"] .nav-link.active:hover,
   nav[data-toggle="toc"] .nav > li > a:focus,
   nav[data-toggle="toc"] .nav > li > a:hover {
-    color: #000000 !important; /* 검은색으로 변경 */
-    border-left-color: #000000 !important; /* 검은색으로 변경 */
+    color: var(--toc-highlight) !important;
+    border-left-color: var(--toc-highlight) !important;
   }
 
   /* categories */
