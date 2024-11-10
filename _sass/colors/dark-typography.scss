@@ -123,8 +123,8 @@
   nav[data-toggle="toc"] .nav-link.active:hover,
   nav[data-toggle="toc"] .nav > li > a:focus,
   nav[data-toggle="toc"] .nav > li > a:hover {
-    color: var(--toc-highlight) !important;
-    border-left-color: var(--toc-highlight) !important;
+    color: #000000 !important; /* 검은색으로 변경 */
+    border-left-color: #000000 !important; /* 검은색으로 변경 */
   }
 
   /* categories */
