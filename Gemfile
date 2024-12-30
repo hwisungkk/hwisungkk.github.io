@@ -19,6 +19,7 @@ end
 gem 'wdm', '~> 0.2.0', platforms: [:mingw, :x64_mingw, :mswin]
 gem 'csv'
 gem 'logger'
+gem 'base64'
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
