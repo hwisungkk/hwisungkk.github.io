@@ -2,7 +2,7 @@
 title: switch case의 작동 방식
 date: 2024-11-28 23:19:52 +09:00
 last_modified_at: 2024-11-30 01:35:12 +09:00
-categories: [language, 호기심 탐구]
+categories: [호기심 탐구]
 tags:
   [
     'switch case',
