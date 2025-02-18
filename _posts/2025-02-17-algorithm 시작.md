@@ -1,7 +1,7 @@
 ---
 title: algorithm 시작
-date: 2025-02-18 09:12:00 +09:00
-last_modified_at: 2025-02-18 10:01:05 +09:00
+date: 2025-02-17 09:12:00 +09:00
+last_modified_at: 2025-02-17 10:01:05 +09:00
 categories: [algorithm]
 tags:
   [
