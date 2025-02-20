@@ -14,123 +14,73 @@ tags:
 
 [Consonants (Large)](https://www.acmicpc.net/problem/12318)
 
-마라톤에 나와 푼 영어 문제라 눈에 안 들어온다..
+마라톤에 나와 푼 영어 문제라 눈에 안 들어온다..<br>
+코드 잼 2013년 문젠데 이게 왜 골드 5지.. 생각하기 어려운 애드 훅 같은데 
 
----
-### 풀이
-MCMF라는 유체 알고리즘 문제라는데 그리디로 풀었다.<br>
-구현이 좀 길긴한데 단순해서 생각난 대로 짰더니 잘 됐다.
+문제는 이런 입력에서
+```
+예제 입력 1 
+4
+quartz 3
+straight 3
+gcj 2
+tsetse 2
 
-아이디어는 A거리 - B거리의 절댓값으로 정렬해서 A에 가는게 이득이면 A에 넣고,<br>
-B에 가는게 이득이면 B에 넣고 한 쪽이 꽉차면 남은거 전부 다른 쪽에서 가져오게 했다.<br>
-총 풍선의 개수가 구할 풍선의 개수보다 작다고 써있기 때문에 가능하다. 
+예제 출력 1 
+Case #1: 4
+Case #2: 11
+Case #3: 3
+Case #4: 11
+```
+문자열의 모든 집합 중 자음이 뒤에 입력된 숫자보다 많이 연속으로 있는 집합의 개수를 센다.<br>
+어떻게 해야할지 모르겠어서 editorial을 찾아서 풀었다.<br>
+생각을 해보면 집합 중 뒤에 남은 부분 * 여태까지 안 한 앞의 부분이 되는 거기는 하네요. 어렵다.<br> 
 
-입력 케이스가 왜 0 0 0으로 끝나나 했는데 while(1)로 여러 테스크 케이스를 받아야 풀리는 문제였다.<br>
-시간초과도 안 나는게 O(N)으로 종료된다.
 
 ```c++
 #include <iostream>
 #include <vector>
 #include <string>
-#include <queue>
-#include <array>
 #include <tuple>
+#include <stack>
+#include <set>
+#include <queue>
 #include <algorithm>
 #include <math.h>
 using namespace std;
-int al = 0;
-int max = 10001;
-int dx[4] = {0, 0, -1, 1};
-int dy[4] = {-1, 1, 0, 0};
-int ar[102][102] = {0};
 int main()
 {
-    ios_base ::sync_with_stdio(false);
+    ios_base ::sync_with_stdio(false); 
     cin.tie(NULL);
     cout.tie(NULL);
-    while (1)
-    {
-        long long a, b, c, total = 0;
-        long long block = 0;
-        int n, m, k;
-        int bal, ad, bd;
-        cin >> n >> a >> b;
-        if(n+a+b==0)break;
-        vector<tuple<int, int, int>> v;
-        vector<pair<int, int>> index1;
-        vector<pair<int, int>> index2;
-        for (int i = 0; i < n; i++)
-        {
-            cin >> bal >> ad >> bd;
-            v.push_back({bal, ad, bd});
-            if (ad - bd >= 0)
-                index1.push_back({ad - bd, i});
-            if (ad - bd < 0)
-                index2.push_back({ad - bd, i});
+    
+    long long n, m, k;
+    int a, b, c;
+
+    int t = 0;
+    cin >> t;
+    b=0;
+    while(t-->0){
+        b++;
+        c=0, m=0;
+        long long count=0;
+        string s;
+        cin >> s >> a;
+        n = s.length();
+        vector <int> v(n,0);
+        for(int i=0;i<s.size();i++){
+            if(s[i]!='a' && s[i]!='e' && s[i]!='i' && s[i]!='o' && s[i]!='u')c++;
+            else c=0;
+            v[i]=c;
+
+            if(v[i]>=a){
+                count+= (i-a-m+2)*(n-i);
+                m = i-a+2;
+            }
         }
 
-        sort(index1.begin(), index1.end(), greater<>()); // 양수면 큰 순서 //b에 가야함
-        sort(index2.begin(), index2.end());              // 음수면 작은 순서 //a에가야함
-        int check_a = 0, check_b = 0;
-        for (int i = 0; i < index1.size(); i++)
-        {
-            if (b >= get<0>(v[index1[i].second]))
-            {
-                b -= get<0>(v[index1[i].second]);
-                total += get<0>(v[index1[i].second]) * get<2>(v[index1[i].second]);
-                get<0>(v[index1[i].second]) = 0;
-            }
-            else
-            {
-                total += get<2>(v[index1[i].second]) * b;
-                get<0>(v[index1[i].second]) -= b;
-                b = 0;
-                check_b = 1;
-            }
-        }
-        for (int i = 0; i < index2.size(); i++)
-        {
-            if (a >= get<0>(v[index2[i].second]))
-            {
-                a -= get<0>(v[index2[i].second]);
-                total += get<0>(v[index2[i].second]) * get<1>(v[index2[i].second]);
-                get<0>(v[index2[i].second]) = 0;
-            }
-            else
-            {
-                total += get<1>(v[index2[i].second]) * a;
-                get<0>(v[index2[i].second]) -= a;
-                a = 0;
-                check_a = 1;
-            }
-        }
-        if (check_a)
-        { // a가 0이면 b에 다 줘야함.
-            for (int i = 0; i < index1.size(); i++)
-            {
-                total += get<0>(v[index1[i].second]) * get<2>(v[index1[i].second]);
-            }
-            for (int i = 0; i < index2.size(); i++)
-            {
-                total += get<0>(v[index2[i].second]) * get<2>(v[index2[i].second]);
-            }
-        }
-        else if (check_b)
-        { // b가 0이면 a에 다 줘야함.
-            for (int i = 0; i < index1.size(); i++)
-            {
-                total += get<0>(v[index1[i].second]) * get<1>(v[index1[i].second]);
-            }
-            for (int i = 0; i < index2.size(); i++)
-            {
-                total += get<0>(v[index2[i].second]) * get<1>(v[index2[i].second]);
-            }
-        }
-        // 음수면 a쪽
-        // 양수면 b쪽
-        cout << total << '\n';
+        cout << "Case #" << b << ": " << count << '\n';
     }
-
     return 0;
 }
 ```
