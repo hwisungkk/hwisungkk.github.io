@@ -11,6 +11,8 @@ tags:
   ]
 ---
 
+![image](/assets/img/wargame/dreamhack/ezrsapz_4.PNG)
+
 오랜만에 드림핵 문제를 붙잡고 풀어봤다.<br>
 방학 때 암호학 스터디를 하면서 계속 암호학 공부를 하다보니 문제가 풀고 싶어졌다.<br>
 
