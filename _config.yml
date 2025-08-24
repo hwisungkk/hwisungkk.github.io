@@ -1,4 +1,10 @@
 # The Site Configuration
+plugins:
+  - jekyll-paginate
+  - jekyll-archives   # 이미 옵션 쓰고 있으니 같이 등록
+
+paginate: 10
+paginate_path: "/page:num/"
 
 # Import the theme
 theme: jekyll-theme-chirpy
