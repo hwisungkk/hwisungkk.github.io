@@ -1,5 +1,5 @@
 ---
-title: (cryptohack) general-Encoding
+title: (cryptohack) general, Encoding
 date: 2025-10-09 18:10:01 +09:00
 last_modified_at: 2025-10-09 23:44:15 +09:00
 categories: [wargame, cryptohack.org]
