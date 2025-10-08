@@ -141,3 +141,12 @@ while True:
 ```
 앞까지 사용한 것들을 이용하는데, byte로 나오는 결과물은 .decode()로 str로 바꾼다.<br>
 rot13은 모듈에 있는 것을 가져다가 썼고, bigint 주어지는 값이 hex라 int로 변환했다.
+
+```
+[DEBUG] Sent 0x25 bytes:
+    b'{"decoded": "budgets_exist_gallery"}\n'
+[DEBUG] Received 0x29 bytes:
+    b'{"flag": "crypto{3nc0d3_d3c0d3_3nc0d3}"}\n'
+Received type:
+
+```
