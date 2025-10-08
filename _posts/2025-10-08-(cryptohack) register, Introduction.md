@@ -15,7 +15,7 @@ tags:
 ## register
 암호학 CTF 사이트 답게 가입할 때 카이사르 암호를 풀게 한다.<br>
 
-![image](../assets/img/security/cryptohack/register_1.PNG)
+![image](/assets/img/security/cryptohack/register_1.PNG)
 
 주어진 문자열을 간단하게 파이썬으로 한글자씩 돌려보면 된다.<br>
 
