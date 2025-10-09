@@ -169,5 +169,5 @@ out = np.concatenate([rgb, alpha], axis=2)
 Image.fromarray(out, mode="RGBA").save("xor.png")
 ```
 
-![image](../assets/img/security/cryptohack/xor.png)
+![image](/assets/img/security/cryptohack/xor.png)
 crypto{X0Rly_n0t!}
