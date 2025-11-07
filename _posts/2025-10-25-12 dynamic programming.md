@@ -47,7 +47,7 @@ DP의 구현 방법은 크게 top-down과 bottom-up 방식이 있다.<br>
 이 때 계산한 값은 dp 배열에 저장한다.
 
 코드로 보면
-```C
+```c++
 long long dp[100];
 
 long long fib(int n) {
@@ -65,7 +65,7 @@ long long fib(int n) {
 점화식을 구하고 for문을 통해서 dp 배열들을 밑에서부터 채워가며 마지막 칸을 답으로 만든다.<br>
 
 역시 피보나치를 예시로 들면
-```C
+```c++
 dp[0] = 0;
 dp[1] = 1;
 for(int i=2;i<=n;i++){
