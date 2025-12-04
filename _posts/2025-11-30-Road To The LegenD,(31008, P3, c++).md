@@ -50,7 +50,26 @@ u번 마을에서 출발하는 고행의 길 하나를 통해 v번 마을로 가
 
 ### 풀이
 우선 편한 길을 그래프로 만들어주고, 격 배열도 간단히 만들 수 있다.<br>
+그 다음 고행의 길을 이어줘야 하는데, 이것을 전부 그으면 N^2개의 길이 생긴다.<br>
 
+답을 구하기 위해서는 다익스트라를 돌려야하는데, 이 선분을 모두 그을 수는 없다.<br>
+그렇기에 사용할 수 있는 방법은 보조점을 그어서 그래프 모델을 새로 구성하는 것이다.<br>
+
+![image](/assets/img/algorithm/legenD_1.PNG)
+
+이렇게 고행의 길이 모델링 되어있다고 하자.<br>
+4개의 점의 H[i]가 전부 다르고, 격을 오름차순으로 정렬한 상태라면 그림처럼 된다.<br>
+이렇게 모든 선을 그으면 N^2개의 길을 긋게 된다는 것을 알 수 있다.<br>
+
+그런데 보조점을 그리면 
+![image](/assets/img/algorithm/legenD_2.PNG)
+
+그림처럼 표현할 수 있다.<br>
+오각형이 각각의 점에 대한 새로운 보조점이고, 이동하는 길은 t[i]만큼 시간이 걸린다.<br>
+그리고 고행의 길은 격 배열에 따라 오름차순으로 이어지므로 서로를 이어주고, 돌아가는 길은 0이다.<br>
+이렇게 하면 N개의 보조점을 통해서 고행의 길을 표현할 수 있고, 다익스트라로 문제를 해결할 수 있다.<br>
+
+보조점을 그려서 그래프를 새로 모델링한다는 아이디어가 재밌고 감동이 있었다.
 
 ```c++
 int main()
@@ -85,67 +104,67 @@ int main()
     
     for(int i=0;i<m;i++){
         cin >> a >> b >> c;
-        graph[a].push_back({b, c});
+        graph[a].push_back({b,c});
+
         H[a]=max(H[a], gyuk[b]);
     }
+
+    // for(int i=1;i<=n;i++){
+    //     cout<<H[i]<<" ";
+    // }cout<<"\n";
 
     set<ll> gyuk_set;
     for(int i=1;i<=n;i++){
         gyuk_set.insert(gyuk[i]);
     }
-    vector<ll> sort_gyuk(gyuk_set.begin(), gyuk_set.end());
-    
-    map<ll, int> gyuk_map;
-    for(int i=0;i<sort_gyuk.size();i++){
-        gyuk_map[sort_gyuk[i]] = n+1+i;
-    }
-    
-    for(int i=1;i<=n;i++){
-        auto it = upper_bound(sort_gyuk.begin(), sort_gyuk.end(), H[i]);
-        int aux = gyuk_map[*it];
-        graph[i].push_back({aux, tt[i]});
-    }
-    
-    for(int i=1;i<=n;i++){
-        int aux = gyuk_map[gyuk[i]];
-        graph[aux].push_back({i, 0});
-    }
-    
-    for(int i=0;i<sort_gyuk.size()-1;i++){
-        int aux1 = gyuk_map[sort_gyuk[i]];
-        int aux2 = gyuk_map[sort_gyuk[i+1]];
-        graph[aux1].push_back({aux2, 0});
-    }
-    vector<ll> dis(2*n+1, 1e16);
 
+    map<ll,ll> gyuk_map; //좌표를 만들어줄 곳임.
+    vector<ll> gyuk_sort;
+    k=0;
+    for(auto at:gyuk_set){
+        gyuk_map[at]=n+1+k; //gyuk[i]가 인 것의 보조점.
+        k++;
+        gyuk_sort.push_back(at);
+    }
+
+    for(int i=1;i<=n;i++){
+        auto it=upper_bound(gyuk_sort.begin(), gyuk_sort.end(), H[i]);
+        if(it!=gyuk_sort.end()){
+            graph[i].push_back({gyuk_map[*it], tt[i]});
+        }
+    }
+
+    for(int i=0;i<gyuk_sort.size()-1;i++){
+        graph[gyuk_map[gyuk_sort[i]]].push_back({gyuk_map[gyuk_sort[i+1]], 0});
+    }
+    for(int i=1;i<=n;i++){
+        graph[gyuk_map[gyuk[i]]].push_back({i, 0}); //돌아가는애?
+    }
+
+    vector<ll> dst(2*n+1, 1e16);
     priority_queue<P, vector<P>, greater<P>> pq;
-    pq.push({0, 1});
-    dis[1]=0;
+    pq.push({0,1});
+    dst[1]=0;
 
     while(!pq.empty()){
         ll val=pq.top().first;
         ll cur=pq.top().second;
         pq.pop();
-        
-        if(val>dis[cur]) continue;
-        
-        for(int i=0;i<graph[cur].size();i++){
-            ll ggo=graph[cur][i].first;
-            //cout << "!!!: " << val << ' ' << cur << ' ' << ggo << '\n';
-            if(dis[cur]+graph[cur][i].second<dis[ggo]){
-                dis[ggo] = dis[cur] + graph[cur][i].second;
-                pq.push({dis[ggo], ggo});
+
+        if(dst[cur]<val)continue;
+
+        for(auto at:graph[cur]){
+            if(dst[at.first]>val+at.second){
+                dst[at.first]=val+at.second;
+                pq.push({dst[at.first], at.first});
             }
         }
     }
-
     for(int i=1;i<=n;i++){
-        //cout<<dis[i]<<' ';
-        if(dis[i]<1e16){
-            ans=max(ans,dis[i]);
-        }
+        //cout << dst[i] << ' ';
+        if(dst[i]!=1e16 && ans<dst[i])ans=dst[i];
     }//cout<<'\n';
-    cout << ans;
+    cout<<ans;
 
     return 0;
 }
