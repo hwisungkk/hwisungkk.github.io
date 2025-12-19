@@ -1,5 +1,5 @@
 ---
-title: Lord Of SQL (45번~48번)
+title: Lord Of SQL (45번~48번) 그리고 all solve
 date: 2025-12-18 04:13:57 +09:00
 render_with_liquid: false
 last_modified_at: 2025-12-18 05:55:12 +09:00
