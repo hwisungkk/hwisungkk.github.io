@@ -151,7 +151,7 @@ taimen:/data/data/mobilehacking.kr.smartgrid/shared_prefs # cat auth_prefs.xml
 ```
 다시 앱을 켜보면 
 
-![image](../assets/img/wargame/mobilehacking.kr/SmartGreed_3.PNG)
+![image](/assets/img/wargame/mobilehacking.kr/SmartGreed_3.PNG)
 
 이렇게 관리자 계정으로 로그인이 잘 되었음을 확인할 수 있다.<br>
 database를 읽거나 xml 조작 과정에는 루팅 권한이 필요하지만 앱을 켤 때는 루팅 권한이 없어야 하니 잘 봐야 한다.<br>
