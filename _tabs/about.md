@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-```
-2021~
-2024~
-```
+## Profile
+김휘성 / 2002.09.19
+
+2021.03 ~ - Konkuk University CSE
