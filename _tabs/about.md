@@ -3,8 +3,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## About
-
 **김휘성** · 2002.09.19  
 Security Researcher & Developer
 
