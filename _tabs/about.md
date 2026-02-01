@@ -42,4 +42,4 @@ Security Researcher & Developer
 
 **2025 Lisathon** 본선 진출
 
-**세종 Hacktaeon** 본선 진출
+**세종 Hacktheon** 본선 진출
