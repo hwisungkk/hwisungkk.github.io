@@ -43,3 +43,12 @@ Security Researcher & Developer
 **2025 Lisathon** 본선 진출
 
 **세종 Hacktheon** 본선 진출
+
+## CVE
+
+### Reolink
+18개<br>
+CVE-2025-55619~CVE-2025-55637, CVE-2025-56799~CVE-2025-56802
+
+https://github.com/Brrester/IoT-Smart-Doorbell-Vulnerability-Analysis-Guide/
+
