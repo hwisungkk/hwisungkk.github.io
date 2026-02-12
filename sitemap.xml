@@ -8,7 +8,8 @@ layout: null
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for post in site.posts %}
     <url>
-        <loc>{{ site.url }}{{ post.url }}</loc>
+        <!-- Escape non-ASCII/reserved characters so crawlers can parse URLs reliably. -->
+        <loc>{{ post.url | absolute_url | uri_escape | xml_escape }}</loc>
         {% if post.lastmod == null %}
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
         {% else %}
