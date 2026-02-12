@@ -1,6 +1,9 @@
 # The Site Configuration
 plugins:
   - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-archives
 
 paginate: 10
 paginate_path: "/page:num/"
