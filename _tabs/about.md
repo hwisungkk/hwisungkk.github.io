@@ -44,6 +44,10 @@ Security Researcher & Developer
 
 **세종 Hacktheon** 본선 진출
 
+### 2026
+
+**HACKING CAMP 32nd** Best Hacker, CTF Killer
+
 ## CVE
 
 ### Reolink
