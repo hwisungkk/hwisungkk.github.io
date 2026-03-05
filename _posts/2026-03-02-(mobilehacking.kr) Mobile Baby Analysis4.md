@@ -12,11 +12,11 @@ tags:
 
 처음으로 풀어보는 ios 앱 리버싱 문제이다.<br>
 mac 환경이 없어서 에뮬레이터조차 돌릴 수 없어 못 풀고 있었는데, 맥북을 얻게 되어 한 번 풀어봤다.<br>
-정적 분석 툴은 기드라, 시뮬레이터는 mac book의 xcode 시뮬레이터를 이용했다.
+정적 분석 툴은 IDA, 시뮬레이터는 mac book의 xcode 시뮬레이터를 이용했다.
 
 우선 기본 정보를 알기 위해서는 ipa앱을 unzip한 다음 내용을 볼 수 있다고 한다.
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_1.PNG)
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_1.PNG" width="600">
 
 이렇게 보면 분석해야 하는 파일은 일단 Info.plist를 슥 본 다음<br>
 에뮬로 앱을 돌리면서 코드를 봐야할 것 같다.
@@ -26,7 +26,7 @@ plutil -convert xml1 Info.plist -o Info_readable.plist
 ```
 바이너리 파일이라 xml로 바꿔서 보기좋게 보면
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
 "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -119,15 +119,15 @@ plutil -convert xml1 Info.plist -o Info_readable.plist
 
 다음으로 앱을 실행해보면
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_2.PNG)
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_2.PNG" width="600">
 
 이런 용돈 기입장 페이지가 나오고, 
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_3.PNG)
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_3.PNG" width="600">
 
 +버튼을 누르면 이렇게 거래 추가 페이지가 나오고, 카테고리와 금액을 적을 후 저장을 할 수 있다.
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_4.PNG)
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_4.PNG" width="600">
 
 그러면 이렇게 내역이 기록되는 가계부 앱이다.<br>
 안드로이드와 다르게 IOS는 따로 함수명의 양식이 어느정도 정해져있거나 하지 않아서<br>
@@ -139,7 +139,7 @@ plutil -convert xml1 Info.plist -o Info_readable.plist
 
 어쨌든 함수를 보면
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_5.PNG)
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_5.PNG" width="600">
 
 이렇게 AddTransactionView, MainView, SecretView가 있고, 가장 의심스러운 곳은 SecretView이다.
 
@@ -280,8 +280,10 @@ if ( v29[0] >= 3LL )             // 3번 이상이면
 ```
 요게 트리거하는 핵심 조건이므로 1초에 3번 이상 바텀 탭을 누르면 flag가 열리게 된다.
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_6.PNG)
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_6.PNG" width="600">
 
-![image](/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_7.PNG)
+조건을 맞추고
+
+<img src="/assets/img/wargame/mobilehacking.kr/MobileBabyAnalysis4_7.PNG" width="600">
 
 코드를 보기가 너무 어렵다.. 리버싱 능력의 한계를 느꼈지만 그래도 어느정도 감은 잡을 수 있었다.
