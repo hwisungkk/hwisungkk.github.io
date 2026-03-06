@@ -265,7 +265,7 @@ else
     tapCount += 1; // 누적
 ```
 이게 timestamp이고
-```C
+```c
 State.wrappedValue.getter(v29);  // tapCount 읽기
 if ( v29[0] >= 3LL )             // 3번 이상이면
 {
