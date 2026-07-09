@@ -10,3 +10,29 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 @import "{{ site.theme }}";
 
 /* append your custom style below */
+#sidebar .sidebar-bottom {
+  display: grid !important;
+  grid-template-columns: repeat(4, 2.4rem);
+  justify-content: center !important;
+  justify-items: center;
+  align-items: center;
+  gap: 0.45rem 0.2rem;
+  width: auto;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+#sidebar .sidebar-bottom .icon-border {
+  display: none !important;
+}
+
+#sidebar .sidebar-bottom > a,
+#sidebar .sidebar-bottom > button.mode-toggle {
+  width: 2.4rem;
+  height: 1.75rem;
+  margin: 0 !important;
+}
+
+#sidebar .sidebar-bottom > button.mode-toggle {
+  grid-column: 1 / -1;
+}

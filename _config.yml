@@ -51,6 +51,10 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
+resume:
+  pdf_url: "/about.pdf"
+  overleaf_url: # Optional: paste the Overleaf read-only View Link here
+
 google_site_verification: pYyao9xpCIQBNcphTAh0BiTHQkCfqTmWLUU9bxwZahE
 
 # ↑ --------------------------

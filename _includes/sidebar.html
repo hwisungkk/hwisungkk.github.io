@@ -40,7 +40,15 @@
     <!-- the real tabs -->
     {% for tab in site.tabs %}
     <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
-      <a href="{{ tab.url | relative_url }}" class="nav-link">
+      {% assign tab_href = tab.url | relative_url %}
+      {% if tab.url == '/about/' and site.resume.pdf_url %}
+        {% assign tab_href = site.resume.pdf_url %}
+        {% assign first_tab_href_char = tab_href | slice: 0 %}
+        {% if first_tab_href_char == '/' %}
+          {% assign tab_href = tab_href | relative_url %}
+        {% endif %}
+      {% endif %}
+      <a href="{{ tab_href }}" class="nav-link">
         <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
         {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
@@ -64,6 +72,7 @@
     {% endunless %}
 
     {% for entry in site.data.contact %}
+      {% assign local_url = false %}
       {% case entry.type %}
         {% when 'github', 'twitter' %}
           {%- capture url -%}
@@ -75,10 +84,19 @@
             javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
           {%- endcapture -%}
         {% when 'rss' %}
-          {% assign url = '/feed.xml' | relative_url %}
+          {% assign url = '/feed.xml' %}
+          {% assign local_url = true %}
         {% else %}
           {% assign url = entry.url %}
+          {% assign first_url_char = url | slice: 0 %}
+          {% if first_url_char == '/' %}
+            {% assign local_url = true %}
+          {% endif %}
       {% endcase %}
+
+      {% if local_url %}
+        {% assign url = url | relative_url %}
+      {% endif %}
 
       {% if url %}
       <a href="{{ url }}" aria-label="{{ entry.type }}"
