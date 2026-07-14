@@ -12,13 +12,13 @@ tags:
 
 6점짜리 작은 문제가 추가되어서 풀어보았다.
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_1.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_1.PNG" width="400">
 
 Activity는 admin, main, login 3개가 있다.
 
 앱을 켜면 login 화면이 있고
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_2.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_2.PNG" width="400">
 
 ```java
 privatestaticfinalStringVALID_PASS="guest123";
@@ -27,7 +27,7 @@ privatestaticfinalStringVALID_USER="guest";
 
 코드에 계정이 주어져 있으니 로그인을 하면 된다.
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_3.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_3.PNG" width="400">
 
 flag 형식이 3개가 있나보다. 
 
@@ -56,7 +56,7 @@ private static final String ENCODED_COUPON = "V0VMQ09NRTIwMzA=";
 
 돌리면 WELCOME2030이 나온다.
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_4.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_4.PNG" width="400">
 
 다음 VIP 쿠폰 부분을 보면 
 ```java
@@ -129,7 +129,7 @@ for i in range(len(vip)):
 ```
 VIP-SHOP-2030
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_5.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_5.PNG" width="400">
 
 마지막으로 admin 로그인만 하면 될 것 같다.
 
@@ -146,7 +146,7 @@ adb shell am start -n mobilehacking.kr.minishop/.AdminActivity
 
 하지만 인증은 안된다.
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_6.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_6.PNG" width="400">
 
 활성화되는 코드를 보면 
 ```java
@@ -169,12 +169,12 @@ public void onConfigurationChanged(Configuration configuration) {
 
 기존의 핸드폰 화면 방향에서 달라졌다가 다시 돌아오면 된다.
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_7.PNG" width="400"> <br>
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_7.PNG" width="400"> <br>
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_8.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_8.PNG" width="400">
 
 flag를 이렇게 다 구할 수 있다.
 
-<img src="../assets/img/wargame/mobilehacking.kr/MiniShop_9.PNG" width="400">
+<img src="/assets/img/wargame/mobilehacking.kr/MiniShop_9.PNG" width="400">
 
 flag{normal_coupon_exported_admin_xor_vip}
